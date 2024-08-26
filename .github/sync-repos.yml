@@ -1,0 +1,27 @@
+name: Sync Repos
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout source repository
+      uses: actions/checkout@v3
+
+    - name: Set up Git
+      run: |
+        git config --global user.name "José Pinheiro"
+        git config --global user.email "josepsousa2012@gmail.com"
+
+    - name: Push to target repository
+      env:
+        TARGET_REPO: https://github.com/psousaj/dart-study
+      run: |
+        git remote add target-repo $TARGET_REPO
+        git push target-repo main
+
