@@ -23,6 +23,6 @@ jobs:
       env:
         TARGET_REPO: https://${{ secrets.TARGET_REPO_TOKEN }}@github.com/psousaj/dart-study.git
       run: |
-        git remote add target-repo $TARGET_REPO
-        git push target-repo main
+        git remote add target $TARGET_REPO
+        git push target main
 
