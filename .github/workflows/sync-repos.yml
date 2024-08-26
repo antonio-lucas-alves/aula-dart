@@ -19,8 +19,9 @@ jobs:
         git config --global user.email "josepsousa2012@gmail.com"
 
     - name: Push to target repository
+      if: ${{ github.repository != 'psousaj/dart-study' }}
       env:
-        TARGET_REPO: https://github.com/psousaj/dart-study
+        TARGET_REPO: https://${{ secrets.TARGET_REPO_TOKEN }}@github.com/psousaj/dart-study.git
       run: |
         git remote add target-repo $TARGET_REPO
         git push target-repo main
