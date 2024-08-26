@@ -1,8 +1,7 @@
 import 'package:dart_bank/account_type.dart';
-import 'package:dart_bank/models/account.dart';
 import 'package:dart_bank/models/simple_account.dart';
 
-class PremiumAccount extends SimpleAccount implements Account {
+class PremiumAccount extends SimpleAccount {
   double cashback;
 
   PremiumAccount(
@@ -13,19 +12,10 @@ class PremiumAccount extends SimpleAccount implements Account {
   });
 
   @override
-  double getBalance() {
-    return 0.0;
-  }
-
-  @override
-  void addBalance(double value) {
-    balance += value;
-  }
-
-  @override
   String getInfo() {
-    // TODO: implement getInfo
-    throw UnimplementedError();
+    String info = super.getInfo();
+    info += "\nCashback: ${getCashBackTax()}%";
+    return info;
   }
 
   @override
@@ -33,15 +23,11 @@ class PremiumAccount extends SimpleAccount implements Account {
     return AccountType.premium;
   }
 
-  @override
-  void removeBalance(double value) {
-    double cashbackValue = value * cashback;
-    balance -= value;
-    balance += cashbackValue;
+  void applyCashback(double withDrawValue) {
+    this.balance += withDrawValue * this.getCashBackTax();
   }
 
-  @override
-  double getCashBack() {
-    return cashback;
+  double getCashBackTax() {
+    return this.cashback;
   }
 }

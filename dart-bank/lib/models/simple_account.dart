@@ -9,19 +9,27 @@ class SimpleAccount implements Account {
   SimpleAccount(this.name, this.number, this.balance);
 
   @override
+  int getAccountNumber() {
+    return number;
+  }
+
+  @override
   double getBalance() {
     return balance;
   }
 
   @override
-  void addBalance(double value) {
+  void deposit(double value) {
     balance += value;
   }
 
   @override
   String getInfo() {
-    // TODO: implement getInfo
-    throw UnimplementedError();
+    String info = "Cliente: $name";
+    info += "\nAccount Number: $number";
+    info += "\nAccount Type: ${getType().name}";
+    info += "\nCurrent balance: \$$balance";
+    return info;
   }
 
   @override
@@ -30,12 +38,7 @@ class SimpleAccount implements Account {
   }
 
   @override
-  void removeBalance(double value) {
+  void withDraw(double value) {
     balance -= value;
-  }
-
-  @override
-  double getCashBack() {
-    return 0.0;
   }
 }

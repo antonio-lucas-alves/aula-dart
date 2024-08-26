@@ -21,7 +21,7 @@ void main() {
       transferService(account1, account2, 200.0);
 
       expect(account1.getBalance(), 800.0);
-      expect(account2.getBalance(), 1220.0);
+      expect(account2.getBalance(), 1200.0);
     });
   });
 }
