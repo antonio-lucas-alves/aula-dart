@@ -4,7 +4,7 @@ import 'package:dart_bank/transferException.dart';
 
 void transferService(Account from, Account to, double transferValue) {
   if (from.getAccountNumber() == to.getAccountNumber()) {
-    throw TransferException("Source account cannot be identical to the destination account");
+    throw TransferException("Cannot transfer to the same account");
   }
 
   if (transferValue <= 0 || from.getBalance() < transferValue) {

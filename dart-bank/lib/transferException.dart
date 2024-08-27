@@ -1,5 +1,10 @@
-import 'dart:io';
+class TransferException implements Exception {
+  late final String message;
 
-class TransferException extends StdinException {
-  TransferException(super.message);
+  TransferException(this.message);
+
+  @override
+  String toString() {
+    return "TransferException: $message";
+  }
 }

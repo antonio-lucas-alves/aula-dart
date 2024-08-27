@@ -8,13 +8,13 @@ class PremiumAccount extends SimpleAccount {
     super.name,
     super.number,
     super.balance, {
-    this.cashback = 0.5,
+    this.cashback = 5,
   });
 
   @override
   String getInfo() {
     String info = super.getInfo();
-    info += "\nCashback: ${getCashBackTax()}%";
+    info += "\nCashback: ${getCashBack()}%";
     return info;
   }
 
@@ -27,7 +27,11 @@ class PremiumAccount extends SimpleAccount {
     this.balance += withDrawValue * this.getCashBackTax();
   }
 
+  double getCashBack() {
+    return cashback;
+  }
+
   double getCashBackTax() {
-    return this.cashback;
+    return this.cashback / 100;
   }
 }
